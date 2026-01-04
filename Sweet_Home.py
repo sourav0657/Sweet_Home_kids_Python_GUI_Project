@@ -22,7 +22,6 @@ class SweetHome:
         margin = 250
         self.house_width = self.f.winfo_width() * 0.20
         self.house_height = self.f.winfo_height() * 0.20
-
         self.w1 = self.f.winfo_width() - self.house_width - margin
         self.w2 = self.house_width + self.w1
         self.h1 = ((self.f.winfo_height() - self.house_height) / 2 + 50)
@@ -43,7 +42,6 @@ class SweetHome:
         self.home_bushes()
         self.home_pond()
 
-
     def home_door_rect(self):
         # Door size (relative to house)
         self.door_width = self.house_width * 0.25
@@ -56,11 +54,9 @@ class SweetHome:
         # Place door at bottom of house
         self.dh2 = self.h2
         self.dh1 = self.dh2 - self.door_height
-
         self.home_door =  self.f.create_rectangle(self.dw1, self.dh1, self.dw2, self.dh2,fill="#8B5A2B", outline="black", width=1)
         self.home_door_text = self.f.create_text((self.dw1 + self.dw2) / 2,(self.dh1 + self.dh2) / 2,text="Learn ABCD",
                                                  fill="white",font=("Arial", 9, "bold"))
-
         self.f.tag_bind(self.home_door,"<Button-1>", self.home_door_click)
         self.f.tag_bind(self.home_door, "<Button-3>", self.home_door_click)
         self.f.tag_bind(self.home_door_text, "<Button-1>", self.home_door_click)
@@ -79,13 +75,11 @@ class SweetHome:
         # Left window
         self.lw1 = self.w1 + self.house_width * 0.15
         self.lw2 = self.lw1 + self.window_width
-
         self.f.create_rectangle(self.lw1, self.wy1, self.lw2, self.wy2, fill="#D9A441", outline="black", width=1)  # Soft Amber Glass
 
         # Right window
         self.rw2 = self.w2 - self.house_width * 0.10
         self.rw1 = self.rw2 - self.window_width
-
         self.f.create_rectangle(self.rw1, self.wy1, self.rw2, self.wy2, fill="#D9A441", outline="black", width=1)  # Soft Amber Glass
 
     def home_roof(self):
@@ -93,7 +87,6 @@ class SweetHome:
         self.roof_peak_x = (self.w1 + self.w2) / 2
         self.roof_height = self.house_height * 0.85  # adjust for steepness
         self.roof_peak_y = self.h1 - self.roof_height
-
         self.f.create_polygon(self.w1,self.h1,self.w2,self.h1,self.roof_peak_x,self.roof_peak_y,fill= "#424242", outline="black",width=1) #charcoal grey
 
     def home_roof_window_rect(self):
@@ -108,7 +101,6 @@ class SweetHome:
         # Place window slightly below the roof peak
         self.rh1 = self.roof_peak_y + self.roof_height * 0.55
         self.rh2 = self.rh1 + self.roof_window_height
-
         self.f.create_rectangle(self.rf1, self.rh1, self.rf2, self.rh2,fill="#6FAFC8", outline="black", width=1) #Smoky Sky Blue
 
     def home_sun_moon(self):
@@ -121,8 +113,6 @@ class SweetHome:
         self.sun_moon_h1 = self.oval_height
         self.sun_moon_w2 = self.oval_width + self.margin1
         self.sun_moon_h2 = self.oval_height + self.margin2
-        # self.f.create_oval(self.sun_moon_w1,self.sun_moon_h1,self.sun_moon_w2,self.sun_moon_h2,
-        #                    fill="#FFD84D",outline="black",width=1) #Warm Golden Sun
         self.moon_button = self.f.create_oval(self.sun_moon_w1,self.sun_moon_h1,self.sun_moon_w2,self.sun_moon_h2,
                            fill="#FFD84D",outline="black",width=1) #Warm Golden Sun
         self.f.sun_text =self.f.create_text((self.sun_moon_w1 + self.sun_moon_w2)/2,
@@ -143,10 +133,8 @@ class SweetHome:
             # Switch to night (Moon)
             self.f.itemconfig(self.moon_button, fill="#DDE6F0")
             self.f.config(bg="#0B1D3A")
-
             self.f.itemconfig(self.f.sun_text, state="hidden")
             self.f.itemconfig(self.f.moon_text, state="normal")
-
             self.f.itemconfig(self.home_pond_color, fill="#1F5F6E")
             webbrowser.open("https://www.youtube.com/watch?v=i_jiQzoQF5M")
 
@@ -154,13 +142,10 @@ class SweetHome:
             # Switch to day (Sun)
             self.f.itemconfig(self.moon_button, fill="#FFD84D")
             self.f.config(bg="#FFD6A5")
-
             self.f.itemconfig(self.f.sun_text, state="normal")
             self.f.itemconfig(self.f.moon_text, state="hidden")
             webbrowser.open("https://www.youtube.com/watch?v=B-b4XvuQo1Y")
             self.f.itemconfig(self.home_pond_color, fill="lightblue")
-
-
         self.is_sun = not self.is_sun
 
     def home_road(self):
